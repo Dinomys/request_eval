@@ -21,7 +21,7 @@ public class ViewController {
         return "administratorMain.html";
     }
 
-    @GetMapping("/form")
+    @GetMapping("/evaluator/form")
     public String getForm(){
         return "form.html";
     }
