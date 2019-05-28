@@ -21,10 +21,10 @@ public class User extends PersonEntityBase implements Serializable {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private Agent agent;
 
-    @OneToMany(mappedBy = "formrequest")
+    @OneToMany(mappedBy = "user")
     private Set<FormRequest> formRequestSet;
 
-    @OneToMany(mappedBy = "formwrapup")
+    @OneToMany(mappedBy = "user")
     private Set<FormWrapup> formWrapupSet;
 
     private ArrayList<String> roles;

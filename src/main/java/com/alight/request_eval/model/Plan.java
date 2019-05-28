@@ -22,6 +22,6 @@ public class Plan implements Serializable {
     @OneToMany(mappedBy = "plan")
     private Set<FormRequest> formRequestSet;
 
-    @OneToMany
+    @OneToMany (mappedBy = "plan")
     private Set<FormWrapup> formWrapupSet;
 }

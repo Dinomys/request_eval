@@ -11,6 +11,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -33,7 +34,7 @@ public class FormEntityBase {
 
     @ManyToOne
     @JoinColumn(name = "plan_id", referencedColumnName = "id")
-    private Set<Plan> plan;
+    private Plan plan;
 
     @Enumerated(EnumType.STRING)
     private FormTypeEnum type;
@@ -41,7 +42,7 @@ public class FormEntityBase {
     private LocalDate interactionDate;
     private LocalDate formCompletionDate;
 
-    private List<Question> questions;
+    private ArrayList<Question> questions;
     private int totalScoreAvailable;
     private int score;
     private BigDecimal result;
