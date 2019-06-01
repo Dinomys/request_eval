@@ -28,7 +28,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.inMemoryAuthentication()
                 .withUser("rodent@rodent.pl")
                 .password("grain")
-                .roles("ADMIN")
+                .roles("ADMIN", "USER")
                 .and()
                 .withUser("user@rodent.pl")
                 .password("feed")
@@ -38,19 +38,23 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/").permitAll()
+                .antMatchers("/").hasRole("USER")
+                .antMatchers("/login").permitAll()
                 .antMatchers("/administrator/**").hasRole("ADMIN")
                 .antMatchers("/evaluator/**").hasRole("USER")
+                .antMatchers("/reporting/***").hasRole("ADMIN")
                 .antMatchers("/h2/**").hasRole("ADMIN")
                 .anyRequest().permitAll()
                 .and()
                 .csrf().disable()
                 .formLogin()
-                .loginPage("/login.html")
+                .loginPage("/login")
                 .usernameParameter("lan")
                 .passwordParameter("password")
-                .defaultSuccessUrl("/")
+                .loginProcessingUrl("/login-process")
+                .defaultSuccessUrl("/index")
+                .failureUrl("/loginFail")
                 .and()
-                .logout().logoutSuccessUrl("/login.html");
+                .logout().logoutSuccessUrl("/login");
     }
 }

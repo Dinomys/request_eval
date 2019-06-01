@@ -7,29 +7,28 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class ViewController {
 
-    @GetMapping("/")
-    public String getLogin(){
-        return "login.html";
+    @GetMapping("/login")
+    public String login(){
+        return "login";
     }
-
-    @PostMapping("/index")
-    public String getIndex(){
-        return "index.html";
+    @GetMapping("/")
+    public String slash(){
+        return "index";
     }
 
     @GetMapping("/evaluator")
     public String getEvaluatorMain(){
-        return "evaluator/evaluatorMain.html";
+        return "evaluator/evaluatorMain";
     }
 
     @GetMapping("/administrator")
     public String getAdministratorMain(){
-        return "administrator/administratorMain.html";
+        return "administrator/administratorMain";
     }
 
     @GetMapping("/evaluator/form")
     public String getForm(){
-        return "form.html";
+        return "form";
     }
 
     @GetMapping("/reporting")

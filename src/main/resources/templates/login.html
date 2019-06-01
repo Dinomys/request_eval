@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,7 +14,7 @@
             crossorigin="anonymous"></script>
 </head>
 <body>
-<form action="/index" method="post">
+<form class="form-signin" th:action="@{/login-process}" method="post">
     <div class="form-group">
         <label for="lan">LAN ID</label>
         <input type="text" class="form-control" id="lan" aria-describedby="lanHelp" name="lan" placeholder="Enter LAN ID">
