@@ -16,6 +16,11 @@ public class ViewController {
         return "index";
     }
 
+    @GetMapping("/loginFail")
+    public String loginFail(){
+        return "/loginFail.html";
+    }
+
     @GetMapping("/evaluator")
     public String getEvaluatorMain(){
         return "evaluator/evaluatorMain";
