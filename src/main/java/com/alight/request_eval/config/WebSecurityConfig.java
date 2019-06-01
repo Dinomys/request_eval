@@ -27,11 +27,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
                 .withUser("rodent@rodent.pl")
-                .password("grain")
+                .password(passwordEncoder.encode("grain"))
                 .roles("ADMIN", "USER")
                 .and()
                 .withUser("user@rodent.pl")
-                .password("feed")
+                .password(passwordEncoder.encode("feed"))
                 .roles("USER");
     }
 
