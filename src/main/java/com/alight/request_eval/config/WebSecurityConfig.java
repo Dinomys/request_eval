@@ -46,11 +46,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .csrf().disable()
                 .formLogin()
-                .loginPage("/login")
-                .usernameParameter("username")
+                .loginPage("/login.html")
+                .usernameParameter("lan")
                 .passwordParameter("password")
                 .defaultSuccessUrl("/")
                 .and()
-                .logout().logoutSuccessUrl("/login");
+                .logout().logoutSuccessUrl("/login.html");
     }
 }

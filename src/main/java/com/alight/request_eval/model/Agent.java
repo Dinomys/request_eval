@@ -15,7 +15,6 @@ import java.util.Set;
 @Setter
 public class Agent extends PersonEntityBase implements Serializable {
 
-
     @OneToMany (mappedBy = "agent")
     private Set<FormRequest> formRequestSet;
 
@@ -25,4 +24,8 @@ public class Agent extends PersonEntityBase implements Serializable {
     @OneToOne
     @JoinColumn (name = "userid", referencedColumnName = "id")
     private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "managerid", referencedColumnName = "id")
+    private Manager manager;
 }

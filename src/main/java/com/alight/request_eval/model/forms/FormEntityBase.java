@@ -3,7 +3,6 @@ package com.alight.request_eval.model.forms;
 import com.alight.request_eval.model.Agent;
 import com.alight.request_eval.model.Plan;
 import com.alight.request_eval.model.User;
-import com.alight.request_eval.service.questions.Question;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,8 +11,6 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
 
 @Getter
 @Setter
