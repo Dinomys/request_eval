@@ -27,7 +27,7 @@ public class PlanService {
     }
 
     public Plan findPlanByName(String name) {
-        return repository.findById(name).orElse(new Plan());
+        return repository.findById(name).orElse(new Plan(name));
     }
 
     public String[] listMonths() {
@@ -35,11 +35,15 @@ public class PlanService {
     }
 
     public Plan createNewPlan(String month, String year) {
-         String name = month + " " + year;
-         if (!listPlanNames().isEmpty() && !listPlanNames().contains(name)){
-             return repository.save(new Plan(name));
-         } else {
-             return findPlanByName(name);
-         }
+        String name = month + " " + year;
+        if (listPlanNames().isEmpty()) {
+            return repository.save(new Plan(name));
+        } else {
+            if (listPlanNames().contains(name)) {
+                return findPlanByName(name);
+            } else {
+                return repository.save(new Plan(name));
+            }
+        }
     }
 }
