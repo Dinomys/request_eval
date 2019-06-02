@@ -2,7 +2,6 @@ package com.alight.request_eval.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class ViewController {
@@ -14,11 +13,6 @@ public class ViewController {
     @GetMapping("/")
     public String slash(){
         return "index";
-    }
-
-    @GetMapping("/loginFail")
-    public String loginFail(){
-        return "/loginFail.html";
     }
 
     @GetMapping("/evaluator")

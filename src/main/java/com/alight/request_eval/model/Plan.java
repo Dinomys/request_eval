@@ -16,8 +16,7 @@ import java.util.Set;
 public class Plan implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
 
     @OneToMany(mappedBy = "plan")
     private Set<FormRequest> formRequestSet;

@@ -6,7 +6,7 @@ public class Question {
     boolean applicable;
     boolean mark;
     String comment;
-    int maxScore;
+    int score;
     boolean requestEval;
     boolean wrapup;
 }

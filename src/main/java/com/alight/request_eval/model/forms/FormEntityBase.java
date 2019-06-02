@@ -43,4 +43,5 @@ public class FormEntityBase {
     private int totalScoreAvailable;
     private int score;
     private BigDecimal result;
+    private boolean completed;
 }
