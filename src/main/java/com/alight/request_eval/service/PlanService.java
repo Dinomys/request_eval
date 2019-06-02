@@ -35,6 +35,11 @@ public class PlanService {
     }
 
     public Plan createNewPlan(String month, String year) {
-        return new Plan(month + " " + year);
+         String name = month + " " + year;
+         if (!listPlanNames().isEmpty() && !listPlanNames().contains(name)){
+             return repository.save(new Plan(name));
+         } else {
+             return findPlanByName(name);
+         }
     }
 }
