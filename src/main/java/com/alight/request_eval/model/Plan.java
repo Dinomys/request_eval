@@ -23,4 +23,11 @@ public class Plan implements Serializable {
 
     @OneToMany (mappedBy = "plan")
     private Set<FormWrapup> formWrapupSet;
+
+    public Plan(String id) {
+        this.id = id;
+    }
+
+    public Plan() {
+    }
 }

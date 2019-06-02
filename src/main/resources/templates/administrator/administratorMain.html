@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Administrator Main Page</title>
@@ -14,6 +13,40 @@
             crossorigin="anonymous"></script>
 </head>
 <body>
-
+<div>&nbsp;</div>
+<h2>Administrator actions</h2>
+<div>&nbsp;</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <form class="form" th:action="@{/administrator/newplan}" method="get">
+                <button type="submit" class="btn btn-secondary btn-block" id="newplan">Create new plan</button>
+                <ul>
+                    <li>Create a new monthly plan</li>
+                </ul>
+            </form>
+        </div>
+        <div class="col">
+            <form class="form" th:action="@{/administrator/editplan}" method="get">
+                <button type="submit" class="btn btn-secondary btn-block" id="editplan">Review or edit plan</button>
+                <ul>
+                    <li>Review plan completion</li>
+                    <li>Edit plan: change assignees, add or remove forms</li>
+                </ul>
+            </form>
+        </div>
+        <div class="col">
+            <form class="form" th:action="@{/administrator/users}" method="get">
+                <button type="submit" class="btn btn-secondary btn-block" id="users">Manage users</button>
+                <ul>
+                    <li>Add, edit, archive Agents</li>
+                    <li>Edit manager list</li>
+                    <li>Create evaluator profiles</li>
+                    <li>Manage Admin rights</li>
+                </ul>
+            </form>
+        </div>
+    </div>
+</div>
 </body>
 </html>

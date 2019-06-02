@@ -4,7 +4,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class ViewController {
+public class MainViewController {
+
 
     @GetMapping("/login")
     public String login(){
@@ -23,11 +24,6 @@ public class ViewController {
     @GetMapping("/administrator")
     public String getAdministratorMain(){
         return "administrator/administratorMain";
-    }
-
-    @GetMapping("/evaluator/form")
-    public String getForm(){
-        return "form";
     }
 
     @GetMapping("/reporting")

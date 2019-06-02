@@ -28,4 +28,6 @@ public class Agent extends PersonEntityBase implements Serializable {
     @ManyToOne
     @JoinColumn(name = "managerid", referencedColumnName = "id")
     private Manager manager;
+
+    private boolean archived;
 }
