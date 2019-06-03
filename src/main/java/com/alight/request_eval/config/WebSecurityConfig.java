@@ -46,6 +46,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().permitAll()
                 .and()
                 .csrf().disable()
+                .headers().frameOptions().disable().and()
                 .formLogin()
                 .loginPage("/login")
                 .usernameParameter("lan")
