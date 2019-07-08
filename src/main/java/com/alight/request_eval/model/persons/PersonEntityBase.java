@@ -1,4 +1,4 @@
-package com.alight.request_eval.model;
+package com.alight.request_eval.model.persons;
 
 import lombok.Getter;
 import lombok.Setter;

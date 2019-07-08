@@ -1,9 +1,7 @@
-package com.alight.request_eval.model;
+package com.alight.request_eval.model.persons;
 
-import com.alight.request_eval.model.forms.FormEntityBase;
 import com.alight.request_eval.model.forms.FormRequest;
 import com.alight.request_eval.model.forms.FormWrapup;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 

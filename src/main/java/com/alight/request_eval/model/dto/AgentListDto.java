@@ -1,6 +1,6 @@
 package com.alight.request_eval.model.dto;
 
-import com.alight.request_eval.model.Agent;
+import com.alight.request_eval.model.persons.Agent;
 
 public class AgentListDto {
 

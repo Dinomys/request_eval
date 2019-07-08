@@ -1,6 +1,6 @@
 package com.alight.request_eval.repository;
 
-import com.alight.request_eval.model.Agent;
+import com.alight.request_eval.model.persons.Agent;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

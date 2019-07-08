@@ -1,8 +1,8 @@
 package com.alight.request_eval.model.forms;
 
-import com.alight.request_eval.model.Agent;
+import com.alight.request_eval.model.persons.Agent;
 import com.alight.request_eval.model.Plan;
-import com.alight.request_eval.model.User;
+import com.alight.request_eval.model.persons.User;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,7 +10,6 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 @Getter
 @Setter
@@ -39,7 +38,7 @@ public class FormEntityBase {
     private LocalDate interactionDate;
     private LocalDate formCompletionDate;
 
-    private ArrayList<Question> questions;
+
     private int totalScoreAvailable;
     private int score;
     private BigDecimal result;
