@@ -1,7 +1,6 @@
 package com.alight.request_eval.model.persons;
 
-import com.alight.request_eval.model.forms.FormRequest;
-import com.alight.request_eval.model.forms.FormWrapup;
+import com.alight.request_eval.model.forms.Form;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,10 +14,8 @@ import java.util.Set;
 public class Agent extends PersonEntityBase implements Serializable {
 
     @OneToMany (mappedBy = "agent")
-    private Set<FormRequest> formRequestSet;
+    private Set<Form> formSet;
 
-    @OneToMany (mappedBy ="agent")
-    private Set<FormWrapup> formWrapupSet;
 
     @OneToOne
     @JoinColumn (name = "userid", referencedColumnName = "id")

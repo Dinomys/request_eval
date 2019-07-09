@@ -1,8 +1,6 @@
 package com.alight.request_eval.model;
 
-import com.alight.request_eval.model.forms.FormEntityBase;
-import com.alight.request_eval.model.forms.FormRequest;
-import com.alight.request_eval.model.forms.FormWrapup;
+import com.alight.request_eval.model.forms.Form;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,10 +18,7 @@ public class Plan implements Serializable {
     private String id;
 
     @OneToMany(mappedBy = "plan")
-    private Set<FormRequest> formRequestSet;
-
-    @OneToMany (mappedBy = "plan")
-    private Set<FormWrapup> formWrapupSet;
+    private Set<Form> formSet;
 
     public Plan(String id) {
         this.id = id;

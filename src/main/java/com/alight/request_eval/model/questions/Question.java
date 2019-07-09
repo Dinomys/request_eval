@@ -1,9 +1,9 @@
 package com.alight.request_eval.model.questions;
 
-import com.alight.request_eval.model.forms.FormRequest;
-import com.alight.request_eval.model.forms.FormWrapup;
+import com.alight.request_eval.model.forms.Form;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -16,26 +16,16 @@ public class Question {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToMany
-    private Set<FormRequest> request;
-
-    @ManyToMany
-    private Set<FormWrapup> wrapups;
-
-    QuestionSection section;
+    @Enumerated (EnumType.STRING)
+    QuestionSectionEnum section;
 
     String description;
+    Integer maxScore;
 
-    int maxScore;
+    Boolean canBeUnapplicable;
+    Boolean autoFailQuestion;
 
-    boolean canBeUnapplicable;
-    boolean unapplicable;
-    boolean autoFailQuestion;
-    boolean failed;
-    int score;
-    String comment;
-
-    boolean requestEval;
-    boolean wrapup;
+    Boolean formRequest;
+    Boolean formWrapup;
 }
 

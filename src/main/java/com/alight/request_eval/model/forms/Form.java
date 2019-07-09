@@ -3,19 +3,23 @@ package com.alight.request_eval.model.forms;
 import com.alight.request_eval.model.persons.Agent;
 import com.alight.request_eval.model.Plan;
 import com.alight.request_eval.model.persons.User;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import com.alight.request_eval.model.questions.Question;
+import com.alight.request_eval.model.questions.QuestionInForm;
+import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
-@MappedSuperclass
+@Entity
 @EqualsAndHashCode
-public class FormEntityBase {
+@NoArgsConstructor
+public class Form {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -38,9 +42,14 @@ public class FormEntityBase {
     private LocalDate interactionDate;
     private LocalDate formCompletionDate;
 
+    private Long requestNumber;
 
-    private int totalScoreAvailable;
-    private int score;
+    private Integer totalScoreAvailable;
+    private Integer score;
     private BigDecimal result;
-    private boolean completed;
+    private Boolean completed;
+    private Boolean cancelled;
+
+    ArrayList<QuestionInForm> questions;
+
 }

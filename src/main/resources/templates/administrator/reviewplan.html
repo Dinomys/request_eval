@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
-    <title>Edit Plan</title>
+    <title>New Plan</title>
     <link rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
@@ -12,17 +13,33 @@
             integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
             crossorigin="anonymous"></script>
 </head>
+
 <body>
 <div>&nbsp;</div>
-<h2>Pick plan month and year</h2>
+<h2>Pick Plan to review</h2>
 <div>&nbsp;</div>
 <div class="container">
     <form action="/administrator/editplan" method="post">
-        <table>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Plan name</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
 
+            <tr th:each="plan,iterStat : ${planlist}">
+                <th scope="row" th:text="${iterStat.count}"></th>
+                <td th:text="${plan}"><</td>
+                <td><input class="form-check-input" type="radio" name="pickform" id="pickform" th:value="${plan}"></td>
+            </tr>
+            </tbody>
         </table>
         <button type="submit" class="btn btn-secondary">Edit</button>
     </form>
 </div>
+</body>
 </body>
 </html>

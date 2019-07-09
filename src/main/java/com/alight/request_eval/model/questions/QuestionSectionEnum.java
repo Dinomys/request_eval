@@ -1,9 +1,8 @@
 package com.alight.request_eval.model.questions;
 
-public enum QuestionSection {
+public enum QuestionSectionEnum {
     GENERAL,
     OVERVIEW,
-    PERSONALSERVICE,
     COMMUNICATION,
     KNOWLEDGE,
     TIMELINESS,

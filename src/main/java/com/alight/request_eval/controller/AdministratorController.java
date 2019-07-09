@@ -1,6 +1,5 @@
 package com.alight.request_eval.controller;
 
-import com.alight.request_eval.model.Plan;
 import com.alight.request_eval.service.AgentService;
 import com.alight.request_eval.service.PlanService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.context.request.WebRequest;
 
 import javax.validation.Valid;
 
@@ -24,9 +22,10 @@ public class AdministratorController {
     AgentService agentService;
 
 
-    @GetMapping("/newplan")
-    public String getNewPlanForm() {
-        return "administrator/newplan";
+    @GetMapping("/reviewplan")
+    public String getNewPlanForm(Model model){
+        model.addAttribute("planlist", planService.listPlanNames());
+        return "administrator/reviewplan";
     }
 
     @GetMapping("/editplan")
