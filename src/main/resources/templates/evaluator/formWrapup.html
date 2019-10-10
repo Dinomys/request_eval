@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Call/chat wrap-up evaluation form</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+</head>
+<body>
+
+FORMA
+<h2 th:text="${form.getId()}"></h2>
+<form action="/evaluator/evaluatorMain" method="post">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Question</th>
+            <th scope="col">Not applicable</th>
+            <th scope="col">Auto-fail</th>
+            <th scope="col">Comment</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr th:each="question,iterStat : ${form.getQuestions()}">
+            <th scope="row" th:text="${iterStat.count}"></th>
+            <td th:text="${question.getQuestion()}"></td>
+            <td th:text="${question.isUnapplicable()} ? 'Box' : 'No box'"></td>
+            <td class="form-check" th:text="${question.isUnapplicable()}"></td>
+                <input class="form-check-input" type="checkbox" value="" id="notApplicable">
+                <label class="form-check-label" for="notApplicable">
+                    Not applicable
+                </label></td>
+            <td class="form-group">
+                <label for="Comment">Comment</label>
+                <input type="text" class="form-control" id="Comment" placeholder="Comment">
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <button type="submit" class="btn btn-secondary">Edit</button>
+</form>
+</body>
+</html>

@@ -1,7 +1,6 @@
 package com.alight.request_eval.service;
 
 import com.alight.request_eval.model.Plan;
-import com.alight.request_eval.repository.AgentRepository;
 import com.alight.request_eval.repository.PlanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,7 +34,7 @@ public class PlanService {
         return DFS.getMonths();
     }
 
-    public Plan createNewPlan(String month, String year) {
+    public Plan findOrCreateNewPlan(String month, String year) {
         String name = month + " " + year;
         if (listPlanNames().isEmpty()) {
             return repository.save(new Plan(name));

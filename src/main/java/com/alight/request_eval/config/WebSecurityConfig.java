@@ -1,6 +1,7 @@
 package com.alight.request_eval.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -18,7 +19,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public WebSecurityConfig(DataSource dataSource, PasswordEncoder passwordEncoder) {
+    public WebSecurityConfig(@Qualifier("dataSource") DataSource dataSource, PasswordEncoder passwordEncoder) {
         this.dataSource = dataSource;
         this.passwordEncoder = passwordEncoder;
     }
@@ -33,6 +34,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .withUser("user@rodent.pl")
                 .password(passwordEncoder.encode("feed"))
                 .roles("USER");
+        auth.jdbcAuthentication()
+                .usersByUsernameQuery("SELECT u.username, u.hash_password,1 FROM user u WHERE u.id=?")
+                .authoritiesByUsernameQuery("SELECT u.id, r.role_name, 1 " +
+                        "FROM user u " +
+                        "INNER JOIN user_role ur ON ur.user_id = u.id " +
+                        "INNER JOIN role r ON r.id = ur.roles_id " +
+                        "WHERE u.username=?")
+                .dataSource(dataSource)
+                .passwordEncoder(passwordEncoder);
     }
 
     @Override

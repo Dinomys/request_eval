@@ -60,7 +60,7 @@ public class PlanServiceTest {
         Plan test = new Plan("May 2018");
         when(repository.save(test)).thenReturn(test);
         //when
-        Plan plan = service.createNewPlan("May", "2018");
+        Plan plan = service.findOrCreateNewPlan("May", "2018");
         //then
         assertEquals("May 2018", plan.getId());
     }
@@ -73,7 +73,7 @@ public class PlanServiceTest {
         Plan test = new Plan("May 2018");
         when(repository.save(test)).thenReturn(test);
         //when
-        Plan plan = service.createNewPlan("May", "2018");
+        Plan plan = service.findOrCreateNewPlan("May", "2018");
         //then
         assertEquals("May 2018", plan.getId());
     }
@@ -86,7 +86,7 @@ public class PlanServiceTest {
         list.add(new Plan("April 2018"));
         when(repository.findAll()).thenReturn(list);
         //when
-        Plan plan = service.createNewPlan("April", "2018");
+        Plan plan = service.findOrCreateNewPlan("April", "2018");
         //then
         Mockito.verify(repository, times(1)).findById("April 2018");
     }

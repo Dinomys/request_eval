@@ -5,12 +5,10 @@ import com.alight.request_eval.model.forms.FormTypeEnum;
 import com.alight.request_eval.model.questions.Question;
 import com.alight.request_eval.model.questions.QuestionInForm;
 import com.alight.request_eval.repository.FormRepository;
-import com.alight.request_eval.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -25,32 +23,50 @@ public class FormService {
         this.questionService = questionService;
     }
 
-    public Form populateForm (FormTypeEnum type, Form form){
-        List<QuestionInForm> questions = new ArrayList<>();
-
-        switch (type){
+    public Form populateForm(FormTypeEnum type, Form form) {
+        Set<QuestionInForm> questions;
+        switch (type) {
             case Request:
                 questions = questionService.listQuestionsForRequest().stream()
-                    .map(question -> new QuestionInForm(question))
-                    .collect(Collectors.toList());
+                        .map(question -> new QuestionInForm())
+                        .collect(Collectors.toSet());
                 break;
             case Wrapup:
                 questions = questionService.listQuestionsForWrapup().stream()
-                        .map(question -> new QuestionInForm(question))
-                        .collect(Collectors.toList());
+                        .map(question -> new QuestionInForm())
+                        .collect(Collectors.toSet());
+                System.out.println("printing questions");
+                for (QuestionInForm q : questions){
+                    System.out.println(q.getQuestion());
+                }
                 break;
+                default:
+                    QuestionInForm temp = new QuestionInForm();
+                    questions = new HashSet<QuestionInForm>();
+                    questions.add(temp);
+                    break;
         }
-
-        form.setQuestions(null);
-
-    return null;
+        form.setQuestionInFormSet(questions);
+        return form;
     }
 
-    public int[] getAgentFormCount (long agentId, String planId){
-        int [] forms = new int[2];
-        forms[0] = repository.countByPlanIdAgentIdAndType(planId, agentId, FormTypeEnum.Wrapup);
-        forms[1] = repository.countByPlanIdAgentIdAndType(planId, agentId, FormTypeEnum.Request);
-        return forms;
+    public int[] getAgentFormCount(long agentId, String planId) {
+        int[] numberOfForms = new int[2];
+        numberOfForms[0] = repository.countByPlanIdAgentIdAndType(planId, agentId, FormTypeEnum.Wrapup);
+        numberOfForms[1] = repository.countByPlanIdAgentIdAndType(planId, agentId, FormTypeEnum.Request);
+        return numberOfForms;
+    }
+
+    public Form createForm (FormTypeEnum formType){
+        Form newForm = new Form();
+        System.out.println("creating form");
+        populateForm(formType, newForm);
+        System.out.println("populating questions");
+        return repository.save(newForm);
+    }
+
+    public Form findFormById (Long id, FormTypeEnum formType){
+        return repository.findById(id).orElse(createForm(formType));
     }
 
 }

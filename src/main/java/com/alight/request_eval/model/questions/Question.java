@@ -6,12 +6,13 @@ import lombok.Setter;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 @Entity
 @Getter
 @Setter
-public class Question {
+public class Question implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -27,5 +28,9 @@ public class Question {
 
     Boolean formRequest;
     Boolean formWrapup;
+
+    @OneToMany (mappedBy = "question")
+    private Set<QuestionInForm> questionInFormSet;
+
 }
 

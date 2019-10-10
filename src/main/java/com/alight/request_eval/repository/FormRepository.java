@@ -13,4 +13,11 @@ public interface FormRepository extends JpaRepository<Form, Long> {
 
     @Query("SELECT COUNT(f) FROM Form f WHERE PLAN_ID = ?1 AND AGENT_ID = ?2 AND type = ?3")
     int countByPlanIdAgentIdAndType(String planId, Long agentId, FormTypeEnum formType);
+
+    @Query("SELECT COUNT(f) FROM Form f WHERE PLAN_ID = ?1 AND AGENT_ID = ?2 AND type = ?3 " +
+            "AND f.completed = true AND (f.cancelled = false OR f.cancelled = null)")
+    int countCompletedFormsByPlanIdAgentIdAndType(String planId, Long agentId, FormTypeEnum formType);
+
+    @Query("SELECT COUNT(f) FROM Form f WHERE PLAN_ID = ?1 AND AGENT_ID = ?2 AND type = ?3 AND f.cancelled = true")
+    int countCancelledFormsByPlanIdAgentIdAndType(String planId, Long agentId, FormTypeEnum formType);
 }

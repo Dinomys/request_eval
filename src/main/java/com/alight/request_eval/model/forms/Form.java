@@ -8,6 +8,7 @@ import com.alight.request_eval.model.questions.QuestionInForm;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ import java.util.Set;
 @Entity
 @EqualsAndHashCode
 @NoArgsConstructor
-public class Form {
+public class Form implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -50,6 +51,6 @@ public class Form {
     private Boolean completed;
     private Boolean cancelled;
 
-    ArrayList<QuestionInForm> questions;
-
+    @OneToMany (mappedBy = "question")
+    private Set<QuestionInForm> questionInFormSet;
 }

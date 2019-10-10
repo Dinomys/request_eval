@@ -1,17 +1,21 @@
 package com.alight.request_eval.model;
 
+import com.alight.request_eval.model.dto.AgentListDto;
 import com.alight.request_eval.model.forms.Form;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
 public class Plan implements Serializable {
 
     @Id
@@ -22,9 +26,6 @@ public class Plan implements Serializable {
 
     public Plan(String id) {
         this.id = id;
-    }
-
-    public Plan() {
     }
 
     @Override
