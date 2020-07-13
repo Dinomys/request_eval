@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+<form class="form-signin" th:action="@{/login-process}" method="post">
+    <p class="alert alert-danger" th:if="${param.error}" th:text="'Podany login lub hasło są nieprawidłowe'"></p>
+
+    <div class="form-group">
+        <label for="lan">LAN ID</label>
+        <input type="text" class="form-control" id="lan" aria-describedby="lanHelp" name="lan" placeholder="Enter LAN ID">
+        <small id="lanHelp" class="form-text text-muted">Enter your LAN ID without any prefix or leading 0.</small>
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</body>
+</html>

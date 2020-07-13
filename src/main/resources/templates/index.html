@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+<div>&nbsp;</div>
+<div>&nbsp;</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <form class="form" th:action="@{/administrator}" method="get">
+                <button type="submit" class="btn btn-secondary btn-block" id="administrator">Administrator</button>
+                <ul>
+                    <li>Create and manage monthly plans</li>
+                    <li>Add and remove agents, evaluators, and admins</li>
+                </ul>
+            </form>
+        </div>
+        <div class="col">
+            <form class="form" th:action="@{/evaluator/formWrapup}" method="get">
+                <button type="submit" class="btn btn-warning btn-block" id="evaluator" name="evaluator">Evaluator</button>
+                <ul>
+                    <li>Evaluate requests</li>
+                    <li>Review individual monthly plans</li>
+                </ul>
+            </form>
+        </div>
+        <div class="col">
+            <form class="form" th:action="@{/reporting}" method="get">
+                <button type="submit" class="btn btn-dark btn-block" id="reporting" name="reporting">Reporting</button>
+                <ul>
+                    <li>Run reports</li>
+                </ul>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
